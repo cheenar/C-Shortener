@@ -9,6 +9,50 @@ var bodyParser = require('body-parser');
 //VARIABLES
 var app = express();
 
+global.makeID = function makeid(length)
+{
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < length; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+};
+
+//SETUP LOKIJS
+var loki = require("lokijs");
+var db = new loki("urls.json", {
+    autoload: true,
+    autosave: true,
+    autosaveInterval: 5000
+});
+db.loadDatabase({}, function(err, data) {
+    if(err) {
+        console.log(err);
+    }
+});
+if (db.getCollection("URLS") == null) {
+    db.addCollection("URLS");
+}
+
+global.addURL = function(str) {
+    var id = makeID(6);
+    db.getCollection("URLS").insert({
+        link: [str, id]
+    });
+    return id;
+};
+
+global.getURL = function(id) {
+    for(var x = 0; x < db.getCollection("URLS").data.length; x++) {
+        if(db.getCollection("URLS").data[x].link[1] == id) {
+            return db.getCollection("URLS").data[x].link[0];
+        }
+    }
+    return "/";
+}
+
 //SETUP PUG VIEW ENGINE
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

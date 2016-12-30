@@ -1,1 +1,10 @@
-p Hey Nipuna
+html
+  head
+    title CShortener
+    link(rel='stylesheet', type='text/css', href='stylesheets/main.css')
+  body
+    .input
+      form(action='/', method="POST")
+        input(type='text', name='url_link', placeholder='URL')
+        |  
+        input(type='submit', value='Shorten')

@@ -1,0 +1,62 @@
+body {
+    background: url('bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+::-webkit-input-placeholder {
+   color: white;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: white;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: white;  
+}
+
+:-ms-input-placeholder {  
+   color: white;  
+}
+
+input[type=text] {
+    width: 600px;
+    height: 70px;
+    padding-left: 20px;
+    background-color: transparent;
+    border: 5px solid white;
+    color: white;
+    font-size: 20px;
+    font-family: 'Century Gothic';
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    font-family: 'Century Gothic';
+}
+
+div.input {
+    width: 900px;
+    height: 100px;
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+}
+
+input[type=submit] {
+    width: 200px;
+    height: 70px;
+    margin-left: 20px;
+    background-color: transparent;
+    border: 5px solid white;
+    color: white;
+    font-size: 20px;
+    font-family: 'Century Gothic';
+}
